@@ -1,0 +1,257 @@
+{
+  "commons": {
+    "process": "Procesando",
+    "forbidden-error": "Permisos insuficientes para realizar la acción solicitada",
+    "filter-button-tooltip": "Filtrar por",
+    "select_image": "Cargar Imagen",
+    "recharge_image": "Recargar Imágenes",
+    "generals": "Datos Generales",
+    "groups": "Grupos",
+    "roles": "Roles",
+    "user": "Usuario",
+    "file_load": "Cargar Imagen",
+    "clear": "Deshacer",
+    "lists": "Listas",
+    "contacts": "Contactos",
+    "entity": "Entidad",
+    "filter": "Filtrar",
+    "filter-placeholder": "Filtrar...",
+    "entity-filter-placeholder": "Filtrar entidad...",
+    "create": "Crear",
+    "update": "Actualizar",
+    "load": "Cargar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "server-error": "Ocurrió un problema recuperando información desde el servidor, sentimos las molestias que esto pueda causar.",
+    "state": "Estado",
+    "any": "Todos",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "edit": "Editar",
+    "female": "Femenino",
+    "male": "Masculino",
+    "description": "Descripción",
+    "category": "Categoría",
+    "address": "Dirección",
+    "add-image": "Agregar imagen",
+    "empty-list": "No hay elementos que mostrar",
+    "add": "Agregar",
+    "remove": "Eliminar",
+    "bio-data": "Datos biométricos",
+    "selected": "Seleccionado",
+    "remove-confirmation-title": "Eliminar elemento",
+    "remove-confirmation-question": "¿Realmente desea eliminar el elemento de forma permanente?",
+    "dependency-tree": "Árbol de dependencias",
+    "overview": "Resumen del grupo",
+    "auth": "Proveedor de autenticación",
+    "find": "Buscar",
+    "results": "Resultados",
+    "connection-error": "No se pudo establecer la conexión con el servidor",
+    "category-exist-error": "Debe existir al menos una categoría asignada",
+    "dependencies-dirty": "El árbol de dependencias puede no estar actualizado",
+    "empty": "Vacío",
+    "regular-characters": "Caracteres alfanuméricos",
+    "ip-characters": "xxx.xxx.xxx.xxx",
+    "alphabetic": "Caracteres alfabéticos",
+    "id-placeholder": "xxxxxxxxxxx",
+    "numeric-characters": "Caracteres numéricos",
+    "role": "Rol",
+    "specialty": "Especialidad",
+    "filter2": "Filtro",
+    "filters": "Filtros",
+    "employee":"Empleado",
+    "confirm-continue": ".\n ¿Desea continuar?",
+    "yes": "Si",
+    "no": "No",
+    "image": "Foto",
+    "correct-operation": "La operación fue realizada correctamente.",
+    "service":"Servicio",
+    "branch": "Rama",
+    "name": "Nombre",
+    "descrip": "Descripción",
+    "available":"Disponible",
+    "active2":"Activa",
+    "room":"Sala",
+    "permission": "Permiso",
+    "device": "Dispositivo",
+    "ident_device": "Identificador de dispositivo",
+    "add_filter": "Adicionar filtro",
+    "date_period": "Período",
+    "real_time": "Tiempo Real",
+    "duration": "Duración",
+    "estimated_time": "Tiempo Estimado",
+    "specialist":"Especialista",
+    "date":"Fecha",
+    "dateIn":"Fecha entrada",
+    "dateOut":"Fecha salida",
+    "patient":"Paciente",
+    "finished":"Terminada",
+    "unfinished":"No Terminada",
+    "chiropractic":"Quiropraxis",
+    "oriental_medicine":"Medicina Oriental",
+    "hour":"Hora",
+    "status_branch0":" - ",
+    "status_branch1":"Reservada",
+    "status_branch2":"Terminada",
+    "creation": "Creación",
+    "update2": "Actualización",
+    "location_device": "Localización",
+    "classificator": "Clasificador",
+    "encoder": "Codificador",
+    "payment": "Opción de pago",
+    "code": "Código",
+    "insurance": "Seguro",
+    "date_start": "Fecha",
+    "downloadReport": "Descargar reporte",
+    "company": "compañías",
+    "_company": "compañía",
+    "confir": "Sí",
+    "decline": "No",
+    "messconf": "¿Está seguro que desea eliminar este elemento?",
+    "order":"Orden"
+  },
+  "general": {
+    "spanish": "Español",
+    "english": "Inglés",
+    "language": "Lenguaje"
+  },
+  "login": {
+    "title": "Clínica",
+    "login": "Entrar",
+    "language": "Español",
+    "user_placeholder": "Nombre de Usuario",
+    "pass_placeholder": "Contraseña"
+  },
+  "home": {
+    "title": "Título",
+    "administration": "Administración",
+    "ad_branchs": "Ramas",
+    "ad_employees": "Empleados",
+    "ad_masseur": "Masajista",
+    "ad_permissions": "Permisos",
+    "ad_rols": "Roles",
+    "ad_rooms": "Salas",
+    "ad_services": "Servicios",
+    "ad_authentication": "Autenticación",
+    "ad_u_cod_manage": "Gestionar",
+    "ad_u_cod_configure": "Configurar",
+    "ad_u_configuration": "Configuración",
+    "reports": "Reportes",
+    "exist": "Salir",
+    "ad_show_filters": "Mostrar filtros",
+    "report_treatment":"Registro de tratamientos",
+    "report_patient_daily":"Reporte diario de pacientes",
+    "report_daily":"Reporte diario de servicios",
+    "report_daily_setting":"Config. reporte diario",
+    "report_patient_list":"Lista de pacientes",
+    "report_tip":"Reporte de propinas de masajes",
+    "ad_devices": "Dispositivos",
+    "ad_classificators": "Clasificadores",
+    "ad_encoders": "Codificadores",
+    "ad_payments": "Opciones de pago",
+    "report_assistance":"Registro de asistencia",
+    "ad_dates": "Citas planificadas",
+    "format": "Formato",
+    "company": "Compañías"
+  },
+  "header-sidebar": {
+    "dashboard": "Gráficos"
+  },
+  "user-edit": {
+    "f-name": "Nombres",
+    "f-surname": "Apellidos",
+    "id": "Número de identidad",
+    "addr": "Dirección",
+    "gender": "Género",
+    "username": "Nombre de usuario",
+    "auth": "Proveedor de autenticación",
+    "updated": "Usuario modificado con éxito",
+    "error": "El usuario no pudo ser modificado",
+    "p_data":"Datos personales",
+    "c_system":"Credenciales del sistema",
+    "rol_assign":"Asignar roles",
+    "service_assign":"Asignar servicios",
+    "e_token":"Toke de notificación",
+    "e_available":"Disponible",
+    "permission_assign":"Asignar permisos"
+  },
+  "users-admin": {
+    "title": "Gestionar empleados"
+  },
+  "user": {
+    "f-name": "Nombres",
+    "f-surname": "Apellidos",
+    "username": "Nombre de usuario",
+    "user-data": "Datos del usuario"
+  },
+  "add-image": {
+    "add": "Agregar",
+    "cancel": "Cancelar",
+    "header": "Agregar imagen"
+  },
+  "image-handler": {
+    "confirmation-title": "Eliminar imagen",
+    "confirmation-question": "¿Realmente desea eliminar la imagen?"
+  },
+  "not-found": {
+    "header": "La página solicitada no pudo ser encontrada",
+    "app-name": "Clínica"
+  },
+  "graphics": {
+    "treatment-by-service": "Tratamientos por servicio",
+    "treatment-by-sala": "Tratamientos por sala",
+    "treatment-by-empleado": "Tratamientos por empleado",
+    "treatment-by-status": "Tratamientos por estado",
+    "citation-by-fecha": "Citas por fecha",
+    "citation-by-status": "Citas por estado"
+  },
+  "services-admin": {
+    "title": "Gestionar servicios",
+    "color": "Color"
+  },
+  "branchs-admin": {
+    "title": "Gestionar ramas"
+  },
+  "rooms-admin": {
+    "title": "Gestionar salas"
+  },
+  "permissions-admin": {
+    "title": "Gestionar permisos"
+  },
+  "roles-admin": {
+    "title": "Gestionar roles"
+  },
+  "devices-admin": {
+    "title": "Gestionar dispositivos"
+  },
+  "classificators-admin": {
+    "title": "Gestionar clasificadores"
+  },
+  "encoders-admin": {
+    "title": "Gestionar codificadores"
+  },
+  "payments-admin": {
+    "title": "Gestionar opciones de pago"
+  },
+  "company-admin": {
+    "title": "Gestionar compañías"
+  },
+
+  "report-admin": {
+    "title": "Configurar reporte diario",
+    "hora": "Hora[Formato 24H]",
+    "minutos": "Minutos",
+    "correo": "Correo electrónico(s)[separar con coma]",
+    "recibir": "Recibir el reporte",
+    "lunes": "Lunes",
+    "martes": "Martes",
+    "miercoles": "Miércoles",
+    "jueves": "Jueves",
+    "viernes": "Viernes",
+    "sabado": "Sábado",
+    "domingo": "Domingo",
+    "process": "Procesando",
+    "configurar": "Configurar"
+
+  }
+}

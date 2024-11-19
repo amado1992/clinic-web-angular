@@ -1,0 +1,13 @@
+.person-img {
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    position: relative;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: 4px;
+    border-radius: 5px;
+    background-color: white;
+}
+.person-img:hover {
+    transform: scale(2);
+    z-index: 1000;
+}

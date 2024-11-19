@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title" *ngIf="modalTitle">{{ modalTitle }}</h4>
+</div>
+<div class="modal-body">
+  <p>{{ modalQuestion }}</p>
+</div>
+<div class="modal-footer">
+  <button type="button"
+  class="btn btn btn-success"
+  (click)="confirm();"
+  style='box-shadow: none;'>
+    {{ 'commons.confirm' | translate }}
+  </button>
+  <button type="button"
+  class="btn btn btn-danger"
+  (click)="cancel();"
+  style='box-shadow: none;'>
+    {{ 'commons.cancel' | translate }}
+  </button>
+</div>

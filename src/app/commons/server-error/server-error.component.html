@@ -1,0 +1,13 @@
+<span class='d-flex'>
+  <span class="spacer"></span>
+  <span class="d-block">
+    <span class="d-flex">
+      <span class="spacer"></span>
+      <fa-icon [icon]="exclamationIcon" [class]="['text-danger']" size="4x"></fa-icon>
+      <span class="spacer"></span>
+    </span>
+    <p class='text-center mt-1' *ngIf=" !error || (error.status !== 403 && error.code !== 403)">{{ 'commons.server-error' | translate }}</p>
+    <p class='text-center mt-1' *ngIf="error && (error.status === 403 || error.code === 403 )">{{ 'commons.forbidden-error' | translate }}</p>
+  </span>
+  <span class="spacer"></span>
+</span>

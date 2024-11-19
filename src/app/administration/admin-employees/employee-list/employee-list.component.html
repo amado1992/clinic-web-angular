@@ -1,0 +1,173 @@
+<app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>
+<div *ngIf="loadingData" style="text-align: center;">
+  <div class="spinner-border text-primary"></div>
+</div>
+<div *ngIf="!loadingData && !errorLoadingData" class='container-fluid'>
+  <div class='row'>
+    <div class='col-12' style="padding-left: 0px;padding-right: 0px;">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex w-100">
+          <div class="col-10 d-flex align-items-center">
+            <h5 class='mb-0 text-muted'>
+              <fa-icon [icon]="faCogIcon"></fa-icon>
+              {{ 'users-admin.title' | translate }}
+            </h5>
+            <span class='spacer'></span>
+            
+          </div>
+          <div class="d-flex col-2 align-items-center">
+            <fa-icon [icon]="faEye" size="1x" (click)="isCollapsed = !isCollapsed"
+              ngbTooltip="{{ 'home.ad_show_filters' | translate }}" placement="bottom" triggers="manual"
+              #filter_t="ngbTooltip" (mouseenter)="filter_t.open()" (mouseleave)="filter_t.close()">
+            </fa-icon>
+            <span class='ml-2'>
+              <fa-icon [icon]="faPlusCircle" size="1x" (click)="AddEmployee()"
+                ngbTooltip="{{ 'commons.create' | translate }}" placement="bottom" triggers="manual"
+                #create_t="ngbTooltip" (mouseenter)="create_t.open()" (mouseleave)="create_t.close()">
+              </fa-icon>
+            </span>
+            <span class='ml-2'>
+              <fa-icon [icon]="faEdit" size="1x" (click)="EditEmployee()"
+                ngbTooltip="{{ 'commons.edit' | translate }}" placement="bottom" triggers="manual"
+                #edit_t="ngbTooltip" (mouseenter)="edit_t.open()" (mouseleave)="edit_t.close()">
+              </fa-icon>
+            </span>
+            <span class='ml-2'>
+              <fa-icon [icon]="faTimesIcon" size="1x" (click)="RemoveEmployee()"
+                ngbTooltip="{{ 'commons.remove' | translate }}" placement="bottom" triggers="manual"
+                #remove_t="ngbTooltip" (mouseenter)="remove_t.open()" (mouseleave)="remove_t.close()">
+              </fa-icon>
+            </span>
+          </div>
+        </div>
+        <div class="card-body" >
+          <div class='row' >
+            <div class='col-12 mt-2'>
+              <!--<div class='row' style="margin-bottom: 10; margin-left: 0px;">
+                <h4>{{ 'commons.filters' | translate }}</h4>
+              </div>-->
+              <div class='row d-flex'>
+                <div class="d-flex col-12" style="margin-left: 15px;">
+                  <div class="d-flex ml-2" *ngIf="!isCollapsed">
+                    <label class="pr-1" style="padding-top: 5px;
+                    display: block;" for="filterText">{{'commons.filter2' | translate}}</label>
+                    <input id="filterText" class="form-control form-control-sm" type="text"
+                      placeholder="{{ 'commons.filter-placeholder' | translate }}" [(ngModel)]="filterText">
+                  </div>
+                  <div class="d-flex ml-4" *ngIf="!isCollapsed">
+                    <div class="d-flex">
+                      <div class="d-flex">
+                        <label class="pr-1" style="padding-top: 5px;
+                        display: block;" for="role">{{'commons.role' | translate}}</label>
+                        <select id="role" class="form-control form-control-sm" [(ngModel)]="findRole">
+                          <option [value]="'null'">{{'commons.empty'| translate}}</option>
+                          <option [value]="rol.id" *ngFor="let rol of roles">{{ rol.nombre }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex ml-4" *ngIf="!isCollapsed">
+                    <div class="d-flex">
+                      <div class="d-flex">
+                        <label class="pr-1" style="padding-top: 5px;
+                        display: block;" for="specialty">{{'commons.specialty' | translate}}</label>
+                        <select id="specialty" class="form-control form-control-sm" [(ngModel)]="findSpecialty">
+                          <option [value]="'null'">{{'commons.empty'| translate}}</option>
+                          <option [value]="especialidad.id" *ngFor="let especialidad of especialidades">
+                            {{ especialidad.nombre }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex" style=" margin-left: 20px;padding-top: 5px;
+                  display: block;" *ngIf="!isCollapsed">
+                  
+                    <fa-icon [icon]="faSearch" size="1x" style=""
+                        (click)="FilterAction('filter')" ngbTooltip="{{ 'commons.filter' | translate }}"
+                        placement="bottom" triggers="manual" #filterb_t="ngbTooltip" (mouseenter)="filterb_t.open()"
+                        (mouseleave)="filterb_t.close()">
+                      </fa-icon>
+                    <span class='ml-3'>
+                      <fa-icon [icon]="faEraserIcon" size="1x" style=""
+                      (click)="FilterAction('clean')" ngbTooltip="{{ 'commons.clear' | translate }}" placement="bottom"
+                      triggers="manual" #eraser_t="ngbTooltip" (mouseenter)="eraser_t.open()"
+                      (mouseleave)="eraser_t.close()">
+                    </fa-icon>    
+                    </span>
+                  </div>
+                  </div>
+                  
+                 <!-- <div class="d-flex col-2">
+                
+              
+              </div>-->
+              </div>
+            </div>
+          
+          </div>
+          
+          <div class='row' >
+            
+            <div class='col-12 mt-3'>
+
+              <div *ngIf="loadingEmployees">
+
+                <div id="product-table_processing" class="dataTables_processing card" >{{ 'commons.process' | translate
+                }}<div><div></div><div></div><div></div><div></div></div></div>
+              </div>
+              
+              <div class="table-responsive" >
+              
+                <table class="table table-bordered table-hover table-sm mt-0" *ngIf="!loadingEmployees && !errorLoadingEmployees">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">{{'user.username' | translate}}</th>
+                      <th scope="col">{{'user.f-name' | translate}}</th>
+                      <th scope="col">{{'user.f-surname' | translate}}</th>
+                      <th scope="col">{{'commons.role' | translate}}</th>
+                      <th scope="col">{{'commons.specialty' | translate}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of items;let i=index">
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.nombreUsuario}}</td>
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.nombres}}</td>
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.apellidos}}</td>
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.rol}}</td>
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.especialidad}}</td>
+
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)">
+                        {{item.nombreUsuario}}</td>
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)"> {{item.nombres}}
+                      </td>
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)"> {{item.apellidos}}
+                      </td>
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)"> {{item.rol}}</td>
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)">
+                        {{item.especialidad}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex"  *ngIf="!loadingEmployees && !errorLoadingEmployees">
+                  <div class="row">
+                    <app-paginator *ngIf="!loadingData && !errorLoadingData" (pageChange)="pageChanged($event)"  [currentPage] ="currentPage + 1"
+                      maxPage={{totalPages}} totalItems={{totalItems}}>
+                    </app-paginator>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div #btnKeyPress  (click)="FilterAction('filter')">
+</div>

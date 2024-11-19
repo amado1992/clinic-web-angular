@@ -1,0 +1,85 @@
+<div
+  style="background-image: url('./assets/branding/imagen_clinica.jpg');background-repeat: no-repeat; 
+  background-attachment: fixed;background-size: 100% 100%; height:97vh;opacity:80%;">
+  <app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>
+  <div id="app" data-v-app=""><nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href=""> CLINICA </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto"></ul>
+          <ul class="navbar-nav ms-auto" style="margin-left: auto;">
+             <li class="nav-item">
+          
+              <input type="checkbox" (click)="changeLanguage()" class="custom-control-input" id="customSwitches"
+              [checked] = "translated">
+              <label class="custom-control-label" for="customSwitches">{{"general.english" | translate}}</label>  
+            </li></ul></div></div></nav>
+              <main class="py-4"><div class="container"><div class="row justify-content-center">
+                <div class="col-md-8"><div class="card">
+                  <div class="card-header">Login</div><div class="card-body">
+                    <form #form>
+                     <div class="row mb-3">
+                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ 'login.user_placeholder' | translate}}</label>
+                        <div class="col-md-6">
+                          <input type="text" id="login" class="form-control" name="login"
+                          [placeholder]="['login.user_placeholder' | translate]" [(ngModel)]="username" required maxlength="30" pattern="^[a-zA-z]+[0-9]?([\.-]?[a-zA-Z0-9]+)*$">
+                            </div></div><div class="row mb-3"><label for="password" class="col-md-4 col-form-label text-md-end">{{ 'login.pass_placeholder' | translate}}</label>
+                          <div class="col-md-6">
+                            <span *ngIf="showPassword" (click)="showPassword = !showPassword" class='cursor-pointer eye-icon' style="right:-20px;">
+                              <fa-icon [icon]="faEyeSlashIcon" [classes]="['text-muted']" size='lg'></fa-icon>
+                            </span>
+                            <span *ngIf="!showPassword" class='cursor-pointer eye-icon' (click)="showPassword = !showPassword" style="right:-20px;">
+                              <fa-icon [icon]="faEyeIcon" [classes]="['text-muted']" size='lg' ></fa-icon>
+                            </span>
+                            <input [type]="[showPassword ? 'text' : 'password']" id="password" class="form-control" name="login"
+                              [placeholder]="['login.pass_placeholder' | translate]" [(ngModel)]="password" required maxlength="30" pattern="^[a-zA-z]+[0-9]?([\.-]?[a-zA-Z0-9]+)*$">
+                             </div></div><div class="row mb-3"><div class="col-md-6 offset-md-4"><div class="form-check">
+                           </div></div>
+                          </div><div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                              <button #btnKeyPress (click)="submit()" [disabled]="!(username && password)" class="btn login-btn">
+                                {{ 'login.login' | translate}}
+                              </button>
+                        
+                             
+                                </div></div><div class="row mt-4"><div class="col-sm-4"></div></div>
+            </form></div></div></div></div></div></main></div>
+  <!---<div class="container-fluid">
+    <div class="row justify-content-around">
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-4">
+        <div class="auth-box sfadeInDown">
+          <div class="custom-control custom-switch" style="margin-bottom: 20px">
+           
+          </div>
+          <form #form>
+            <div class="form-group">
+             </div>
+            <div class="form-group" style="position: relative;">
+              </div>
+            <div class="d-flex">
+              <span class="spacer"></span>
+                  <span class="ml-2" *ngIf="waitingResponse">
+                <div class="spinner-border text-primary"></div>
+              </span>
+              <span class="spacer"></span>
+
+            </div>
+            <div class="mt-3">
+              <h6 class="m-0 p-0" style="color: red;" *ngIf="message">
+                <fa-icon [icon]="faWarningIcon" size='lg' [classes]="['mr-1']"></fa-icon>
+                {{message}}
+              </h6>
+              <h6 class="m-0 p-0" style="color: red;" *ngIf="connection_error">
+                <fa-icon [icon]="faWarningIcon" size='lg' [classes]="['mr-1']"></fa-icon>
+                {{connection_error | translate }}
+              </h6>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>

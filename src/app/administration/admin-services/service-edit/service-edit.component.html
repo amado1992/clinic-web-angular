@@ -1,0 +1,129 @@
+<div>
+  
+      <div class="card">
+        <div class="modal-header card-header">
+          <div class="d-flex align-items-center">
+            <h5 class='mb-0'>
+              <div *ngIf="service && service.id">
+                <fa-icon [icon]="faCogIcon"></fa-icon>
+                {{ 'commons.update' | translate }} {{ 'commons.service' | translate }}
+              </div>
+              <div *ngIf="service == null || (service && service.id == null)">
+                <fa-icon [icon]="faCogIcon"></fa-icon>
+                {{ 'commons.create' | translate }} {{ 'commons.service' | translate }}
+              </div>
+            </h5>
+          </div>
+          <div *ngIf="updateData" class="d-flex spinner-border text-primary"></div>
+        </div>
+        <div class="modal-body" style="padding-left: 20px;padding-right: 20px;padding-top: 0px;padding-bottom: 0px;">
+          <ul class="nav nav-tabs mt-1" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> General Data</a>
+            </li>
+           
+           
+
+           
+          </ul>
+          <form [formGroup]="serviceForm">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> 
+                <div class="container-fluid" style="padding-left: 0px;padding-right: 5px; margin-bottom: 5px;">
+                  <div class="row no-gutters" style="margin-bottom: 5px;margin-left: 5px;">
+                    <div class="col">
+                      <div class="row no-gutters" style="margin-bottom: 5px;">
+                        <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_name'
+                            style="margin-right: 15px;margin-left: 5px;">{{ 'commons.name' | translate }}*:</label>
+                            </div>
+                            <div class="col-8">
+                          <input class='form-control form-control-sm' type='text' formControlName='name'>
+                        </div>
+                      </div>
+
+                      <div class="row no-gutters" style="margin-bottom: 5px;">
+                        <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_descrip'
+                            style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{ 'commons.descrip' | translate }}:</label>
+                          </div>
+                          <div class="col-8">
+                            <input class='form-control form-control-sm' type='text' formControlName='description'>
+                            <input class='form-control form-control-sm' type='hidden' formControlName='id'>
+                            <input class='form-control form-control-sm' type='hidden' formControlName='version'>
+                        </div>
+                      </div>
+                     
+                      
+                    </div>
+                    <div class="col">
+                      <div class="row no-gutters" style="margin-bottom: 5px;">
+                        <div class="col-2 d-flex" style="margin-bottom: 5px;">
+                          <label for='branch'
+                            style="margin-right: 15px;margin-left: 5px;">{{'commons.branch' | translate}}*:</label>
+                          </div>
+                          <div class="col">
+                          <select class='form-control form-control-sm' formControlName='branchId'>
+                            <option [value]="rama.id" *ngFor="let rama of ramasRegistradas">
+                              {{ rama.nombre }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row no-gutters" style="margin-bottom: 5px;">
+                        <div class="col-2 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_color'
+                            style="margin-right: 15px;margin-left: 5px;">{{ 'services-admin.color' | translate }}:</label>
+                            </div>
+                            <div class="col">
+                          <input class='form-control form-control-sm' type='color' formControlName='color'>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           <!-- <div class='mt-2' style="background-color:#dee2e6;  border-radius: 15px; ;padding-top: 5px;">
+              </div>-->
+          </form>
+        </div> 
+            
+          
+            <div class="modal-footer">
+              <div class="row mt-2 mr-0 ml-0 w-100">
+                <div class="col-8">
+                  <label *ngIf="service && service.id" style="margin-bottom: 0px;">
+                    <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked] = "creating"/>
+                    {{ 'commons.confirm' | translate }} {{ 'commons.update2' | translate }}
+                  </label>
+                  <label *ngIf="service == null || (service && service.id == null)" style="margin-bottom: 0px;">
+                    <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked] = "creating"/>
+                    {{ 'commons.confirm' | translate }} {{ 'commons.creation' | translate }}
+                  </label>
+                </div>
+                <div class="col-4">
+                  <span style='flex: 1 1 auto;'></span>
+                  <button *ngIf="service && service.id" class='btn btn-success'
+                    [disabled]="!serviceForm.valid || !creating || disabled" (click)="okUpdate()"
+                    style='margin-left: 5px; margin-bottom: 10px;'>
+                    {{ 'commons.update' | translate }}
+                  </button>
+                  <button *ngIf="service == null || (service && service.id == null)" class='btn btn-success'
+                    [disabled]="!serviceForm.valid || !creating || disabled" (click)="okUpdate()"
+                    style='margin-left: 5px; margin-bottom: 10px;'>
+                    {{ 'commons.create' | translate }}
+                  </button>
+                  <button class='btn btn-danger' (click)="cancelUpdate();" style='margin-left: 5px; margin-bottom: 10px;'>
+                    {{ 'commons.cancel' | translate }}
+                  </button>
+                </div>
+              </div>
+           
+            </div>
+          
+        
+      </div>
+   
+</div>

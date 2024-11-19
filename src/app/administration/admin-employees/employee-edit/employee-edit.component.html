@@ -1,0 +1,237 @@
+<div *ngIf="loadingData" class="pt-2" style="text-align: center; vertical-align: middle;">
+  <div class="spinner-border text-primary"></div>
+</div>
+<div *ngIf="!loadingData && !errorLoadingData">
+      <div class="card">
+        <div class="modal-header card-header">
+          <div class="d-flex align-items-center">
+            <h5 class='mb-0'>
+              <div *ngIf="+employeeId > 0">
+                <fa-icon [icon]="faCogIcon"></fa-icon>
+                {{ 'commons.update' | translate }} {{ 'commons.employee' | translate }}
+              </div>
+              <div *ngIf="+employeeId == 0">
+                <fa-icon [icon]="faCogIcon"></fa-icon>
+                {{ 'commons.create' | translate }} {{ 'commons.employee' | translate }}
+              </div>
+            </h5>
+          </div>
+          <div *ngIf="updateData" class="d-flex spinner-border text-primary"></div>
+        </div>
+        <div class="modal-body" style="padding-left: 20px;padding-right: 20px;padding-top: 5px;padding-bottom: 5px;">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> {{ 'user-edit.p_data' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{{ 'user-edit.c_system' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">{{ 'user-edit.rol_assign' | translate }}</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="contact0-tab" data-toggle="tab" href="#contact0" role="tab" aria-controls="contact0" aria-selected="false">{{ 'user-edit.service_assign' | translate }}</a>
+            </li>
+          </ul>
+          
+          <form [formGroup]="employeeForm">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  <div class="container-fluid" style="padding-left: 0px;padding-right: 5px; margin-bottom: 5px;">
+                <div class="row no-gutters" style="margin-bottom: 5px;margin-left: 5px;">
+                  <div class="col">
+                    <div class="row no-gutters">
+                      <div class="col-5 d-flex" style="margin-bottom: 5px;">
+                        <label for='e_names' style="margin-right: 15px;margin-left: 5px;">{{ 'user.f-name' | translate
+                          }}*:</label>
+                        </div><div class="col">
+                        <input class='form-control form-control-sm' type='text' formControlName='names'>
+                      </div>
+
+                    </div>
+                    <div class="row no-gutters">
+                      <div class="col-5 d-flex" style="margin-bottom: 5px;">
+                        <label for='e_snames' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{
+                          'user.f-surname' | translate }}*:</label>
+                      </div><div class="col">
+                        <input class='form-control form-control-sm' type='text' formControlName='snames'>
+                      </div>
+                    </div>
+                    
+                    <!-- <div class="d-flex" style="margin-bottom: 5px;">
+                      <label for='specialty'
+                        style="margin-right: 15px;margin-left: 5px;">{{'commons.specialty' | translate}}:</label>
+                      <select class='form-control form-control-sm' formControlName='specialtyId'>
+                        <option [value]="'null'">{{'commons.empty'| translate}}</option>
+                        <option [value]="especialidad.id" *ngFor="let especialidad of especialidadesRegistradas">
+                          {{ especialidad.nombre }}
+                        </option>
+                      </select>
+                    </div> -->
+                  </div>
+                  <div class="col">
+                    <div class="d-flex" style="margin-bottom: 5px;margin-left: 5px;">
+                      <label for='image' style="margin-right: 15px;margin-left: 15px;">{{'commons.image' |
+                        translate}}:</label>
+                      <div id="image" class="d-block ml-2">
+                        <div class="col">
+                          <div class="row" style="align-content: center;">
+                            <img [src]="imageToShow"  *ngIf="imageToShow"
+                              style="display: block;max-width: 100%;max-height: 100px;margin-left: auto;"
+                              class="person-img mr-5">
+                            <fa-icon [icon]="faPictureIcon" [classes]="['text-muted']" size='4x' *ngIf="!imageToShow">
+                            </fa-icon>
+                          </div>
+                          <div class="row">
+                            <app-load-image (selectedFile)="ChangeImage($event)"
+                              loadTooltip="{{ 'commons.select_image' | translate }}"
+                              clearTooltip="{{ 'commons.remove' | translate }}"></app-load-image>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="container-fluid" style="padding-left: 0px;padding-right: 5px;">
+                  <div class="row no-gutters">
+                    <div class="col">
+                      <div class="row no-gutters">
+                        <div class="col-5 d-flex" style="margin-bottom: 5px;margin-left: 5px;">
+                          <label for='e_username' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{
+                            'user.username' | translate }}*:</label>
+                          </div>
+                          <div class="col">
+                          <input class='form-control form-control-sm' type='text' formControlName='username'>
+                        </div>
+                      </div>
+                      <div class="row no-gutters">
+                        <div class="col-5 d-flex" style="margin-bottom: 5px;margin-left: 5px;">
+                          <label for='e_password' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{
+                            'login.pass_placeholder' | translate }}:</label>
+                         </div>
+                         <div class="col">
+                          <input class='form-control form-control-sm' type='text' formControlName='password'>
+                        </div>
+                      </div>
+                    
+                     
+                    </div>
+                    <div class="col">
+                      <div class="d-flex" style="margin-bottom: 5px;">
+                        <label for='e_available' style="margin-right: 15px;margin-left: 15px; margin-bottom: 5px;">
+                          <input type="checkbox" formControlName='available' />
+                          {{ 'user-edit.e_available' | translate }}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="row">
+                  <div class="col-md-6 col-lg-4 col-12" *ngFor="let item of rolesRegistrados; let i=index">
+                    <label>
+                      <input type="radio" [value]="item.id" (change)="onCheckboxRolesChange($event, item.nombre)"
+                        [checked]="IsRolChecked(item.id)" />
+                      {{item.nombre}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="contact0" role="tabpanel" aria-labelledby="contact0-tab">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="d-flex" style="margin-bottom: 5px;" disabled="CheckRolEsp()">
+                      <label for='specialty' style="margin-right: 15px;margin-left: 5px;">{{'commons.specialty' |
+                        translate}}:</label>
+                      <select class='form-control form-control-sm' formControlName='specialtyId'>
+                        <option [value]="'null'" [disabled]="CheckRolEsp()">{{'commons.empty'| translate}}</option>
+                        <option [value]="especialidad.id" *ngFor="let especialidad of especialidadesRegistradas"
+                        [disabled]="CheckRolEsp()">
+                          {{ especialidad.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4 col-12" *ngFor="let item of serviciosRegistrados; let i=index">
+                        <label>
+                          <input type="checkbox" [value]="item.id" (change)="onCheckboxServicesChange($event)"
+                            [checked]="IsServiceChecked(item.id)" [disabled]="CheckEspeciality()" />
+                          {{item.nombre}}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+       </div>
+          <!--    <div class='mt-2' style="">
+              <u>
+                <h4 style="margin-left: 5px;">{{ 'user-edit.p_data' | translate }}</h4>
+              </u>
+            
+            </div>
+            <hr> -->
+           <!-- <div class='mt-2' style=" margin-bottom: 5px;">
+              <u>
+                <h4 style="margin-left: 5px;">{{ 'user-edit.c_system' | translate }}</h4>
+              </u>
+             
+            </div>-->
+          <!--  <div class='mt-2' style="margin-bottom: 5px;">
+              <u>
+                <h4 style="margin-left: 5px;">{{ 'user-edit.rol_assign' | translate }}</h4>
+              </u>
+            
+            </div>
+            <hr>
+            <div class='mt-2' style="">
+              <u>
+                <h4 style="margin-left: 5px;">{{ 'user-edit.service_assign' | translate }}</h4>
+              </u>
+        
+            </div>-->
+            <!--<hr class='mt-3' style="margin-bottom: 5px;">-->
+            <div class="modal-footer">
+              <div class="row mr-0 ml-0 mt-1 w-100">
+                <div class="col-8">
+                <label *ngIf="+employeeId > 0" style="margin-bottom: 0px;">
+                  <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked]="creating" />
+                  {{ 'commons.confirm' | translate }} {{ 'commons.update2' | translate }}
+                </label>
+                <label *ngIf="+employeeId == 0" style="margin-bottom: 0px;">
+                  <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked]="creating" />
+                  {{ 'commons.confirm' | translate }} {{ 'commons.creation' | translate }}
+                </label>
+                </div>
+                <div class="col-4">
+                <span style='flex: 1 1 auto;'></span>
+                <button *ngIf="+employeeId > 0" class='btn btn-success'
+                  [disabled]="!employeeForm.valid || !creating || disabled" (click)="okUpdate()"
+                  style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.update' | translate }}
+                </button>
+                <button *ngIf="+employeeId == 0" class='btn btn-success'
+                  [disabled]="!employeeForm.valid || !creating || disabled" (click)="okUpdate()"
+                  style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.create' | translate }}
+                </button>
+                <button class='btn btn-danger' (click)="cancelUpdate();" style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.cancel' | translate }}
+                </button>
+                </div>
+                </div>
+            </div>
+           
+        
+       
+     
+  </div>
+</div>

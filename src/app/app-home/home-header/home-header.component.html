@@ -1,0 +1,88 @@
+<div class="fixed-top bg-light d-none">
+  <nav class="navbar navbar-dark" style="margin-bottom: 0" >
+    <div class="navbar-brand" style="color: black; cursor: pointer" (click)="hideSideBar()">
+      <fa-icon [icon]="faBarsIcon" size='lg'></fa-icon>
+      {{ 'login.title' | translate}}
+    </div>
+    <div class="d-flex mr-2">
+      <span class="spacer"></span>
+      <div class="mr-2 d-flex align-items-center">
+        <p class='m-0 p-0'>
+          {{ username }}
+        </p>
+        <div class="ml-2">
+          <!--<fa-icon *ngIf="!userImage" [icon]="faUserCircleIcon" [classes]="['d-block', 'text-light']" size='2x'>
+          </fa-icon>
+          <img *ngIf="userImage" [src]="userImage" style="width: 50px; height: 50px;" class="user-avatar">-->
+          
+          <fa-icon *ngIf="userImage == 'null'" [icon]="faUserCircleIcon" [classes]="['d-block']" size='2x'>
+          </fa-icon>
+          <img *ngIf="userImage != 'null'" [src]="userImage" style="width: 50px; height: 50px;" class="user-avatar">
+        </div>        
+      </div>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn" ngbDropdownToggle style="box-shadow: none;">
+          <fa-icon [icon]="faLanguageIcon" [classes]="['']" size='2x'></fa-icon>
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="d-block btn lang-selector" (click)="changeLanguage('en')">{{"general.english" |
+            translate}}
+          </button>
+          <button ngbDropdownItem class="d-block btn lang-selector" (click)="changeLanguage('es')">{{"general.spanish" |
+            translate}}
+          </button>
+        </div>
+      </div>
+      <div class="ml-2" (click)="logout()" style="margin: auto;cursor: pointer;">
+        <fa-icon [icon]="faSignOutIcon" [classes]="['']" size='2x'></fa-icon>
+      </div>
+    </div>
+  </nav>
+</div>
+<div id="header" class="topbar shadow bg-light" style="top:0px;">
+    
+  <div class="topbar-left hide-phone" style="width: 270px;color:white;"  (click)="hideSideBar()" >
+      <div class="text-center logo"  >
+          <fa-icon [icon]="faBarsIcon" size='lg'></fa-icon>
+      {{ 'login.title' | translate}}
+      </div>
+  </div>
+
+  
+  <nav class="" >
+
+    <div class="d-flex mr-2" style="float:right; min-height:70px;">
+    
+      <div class="mr-2 d-flex align-items-center">
+        <p class='m-0 p-0'>
+          {{ username }}
+        </p>
+        <div class="ml-2">
+          <!--<fa-icon *ngIf="!userImage" [icon]="faUserCircleIcon" [classes]="['d-block', 'text-light']" size='2x'>
+          </fa-icon>
+          <img *ngIf="userImage" [src]="userImage" style="width: 50px; height: 50px;" class="user-avatar">-->
+          
+          <fa-icon *ngIf="userImage == 'null'" [icon]="faUserCircleIcon" [classes]="['d-block']" size='2x'>
+          </fa-icon>
+          <img *ngIf="userImage != 'null'" [src]="userImage" style="width: 50px; height: 50px;" class="user-avatar">
+        </div>        
+      </div>
+      <div ngbDropdown class="d-flex align-items-center">
+        <button class="btn" ngbDropdownToggle style="box-shadow: none;">
+          <fa-icon [icon]="faLanguageIcon" [classes]="['']" size='2x'></fa-icon>
+        </button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="d-block btn lang-selector" [ngStyle]="{'color': colorEn}" (click)="changeLanguage('en')">{{"general.english" |
+            translate}}
+          </button>
+          <button ngbDropdownItem class="d-block btn lang-selector" [ngStyle]="{'color': colorEs}" (click)="changeLanguage('es')">{{"general.spanish" |
+            translate}}
+          </button>
+        </div>
+      </div>
+      <div class="ml-2" (click)="logout()" style="margin: auto;cursor: pointer;">
+        <fa-icon [icon]="faSignOutIcon" [classes]="['']" size='2x'></fa-icon>
+      </div>
+    </div>
+  </nav>
+</div>

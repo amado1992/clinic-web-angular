@@ -1,0 +1,133 @@
+
+<!--<app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>-->
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-12' style="padding-left: 0px;padding-right: 0px;">
+      <div class="card">
+        <div class="card-header d-flex w-100">
+          <div class="col-10 d-flex align-items-center">
+            <h5 class='mb-0 text-muted'>
+              <fa-icon [icon]="faCogIcon"></fa-icon>
+              {{ 'report-admin.title' | translate }}
+            </h5>
+          
+          </div>
+        </div>
+          <div class="card-body" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 5px;">
+            <div *ngIf="loadingSettingRD" style="text-align: center;">
+              <div id="product-table_processing" class="dataTables_processing card" >{{ 'report-admin.process' | translate }}...<div><div></div><div></div><div></div><div></div></div></div>
+               
+            </div>
+            <div *ngIf="!loadingSettingRD" class='row' >
+              <div class='col-12 mt-2'>
+                <div class='row'>
+            <form [formGroup]="settingRDForm" style="width: 100%;padding: 40px;padding-bottom: 10px;">
+       
+                  <div class="container-fluid" style="padding-left: 0px;padding-right: 5px; margin-bottom: 5px;">
+                    <div class="row no-gutters" style="margin-bottom: 5px;">
+                  
+                        <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_email' style="margin-right: 15px;margin-left: 5px;">{{ 'report-admin.correo' | translate }}:</label>
+                        </div>
+                        <div class="col-6">
+                          <input class='form-control form-control-sm' type='text' id='email' formControlName='email'>
+                          <input class='d-none' type='hidden' id='id' formControlName='id'>
+                        </div>
+                        </div>
+                     
+                        <div class="row no-gutters" style="margin-bottom: 5px;">
+                  
+                          <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_hora' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{ 'report-admin.hora' | translate }}:</label>
+                        </div>
+                        
+                        <div class="col-4">
+                          <input id="hora" min="1" step="1" inputmode="numeric" pattern="[0-9]*" class='form-control form-control-sm' type='number' formControlName='hora'>
+                        </div>
+                        </div>
+
+                        <div class="row no-gutters" style="margin-bottom: 5px;">
+                  
+                          <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_minutos' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{ 'report-admin.minutos' | translate }}:</label>
+                        </div>
+                        
+                        <div class="col-4">
+                          <input id="minutos" min="1" step="1" inputmode="numeric" pattern="[0-9]*" class='form-control form-control-sm' type='number' formControlName='minutos'>
+                        </div>
+                        </div>
+  
+                          <div class="row no-gutters" style="margin-bottom: 5px;">
+                  
+                            <div class="col-3 d-flex" style="margin-bottom: 5px;">
+                              <label for='e_diasemana' style="margin-right: 15px;margin-left: 5px;">{{ 'report-admin.recibir' | translate }}</label>
+                            </div>
+
+                          <div class="col-9 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_lunes' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                            <input type="checkbox" formControlName='lunes' />
+                            {{ 'report-admin.lunes' | translate }}
+                          </label>
+                       
+                         
+                            <label for='e_martes' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                            <input type="checkbox" formControlName='martes' />
+                            {{ 'report-admin.martes' | translate }}
+                          </label>
+                      
+                          <label for='e_miercoles' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                          <input type="checkbox" formControlName='miercoles' />
+                          {{ 'report-admin.miercoles' | translate }}
+                        </label>
+                    
+                        <label for='e_jueves' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                        <input type="checkbox" formControlName='jueves' />
+                        {{ 'report-admin.jueves' | translate }}
+                      </label>
+                    
+                      <label for='e_viernes' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                      <input type="checkbox" formControlName='viernes' />
+                      {{ 'report-admin.viernes' | translate }}
+                    </label>
+                 
+                    <label for='e_sabado' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                    <input type="checkbox" formControlName='sabado' />
+                    {{ 'report-admin.sabado' | translate }}
+                  </label>
+
+                  <label for='e_sabado' style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">
+                    <input type="checkbox" formControlName='domingo' />
+                    {{ 'report-admin.domingo' | translate }}
+                  </label>
+                </div>
+                        </div>
+                        
+                      </div>
+           
+            <!-- <div class='mt-2' style="background-color:#dee2e6;  border-radius: 15px; ;padding-top: 5px;">
+         
+              </div>-->
+            </form>
+          </div>
+          </div>
+          </div>
+          <div *ngIf="!loadingSettingRD" class="row  mr-0 ml-0 w-100">
+            <div class="col-10">
+             <span style='flex: 1 1 auto;'></span>
+             <button  class='btn btn-success' (click)="updateSetting();"
+               style='margin-left: 5px; margin-bottom: 10px;'>
+               {{ 'report-admin.configurar' | translate }}
+             </button>
+            </div>   
+           </div>
+          </div>
+
+       
+            
+           
+
+          
+          </div>
+          </div>
+          </div>
+          </div>

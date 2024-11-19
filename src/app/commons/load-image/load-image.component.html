@@ -1,0 +1,8 @@
+<input hidden type="file" (change)="onFileChanged($event)" accept="image/*" #fileInput>
+<span (click)="fileInput.click()" ngbTooltip="{{ !loadTooltip ? '' : loadTooltip }}" placement="left">
+  <fa-icon [icon]="faPictureIcon" size='1x' [classes]="['common-photo-button']">
+  </fa-icon>
+</span>
+<span (click)="remove()" ngbTooltip="{{!clearTooltip ? '' : clearTooltip }}" placement="right">
+  <fa-icon [icon]="faCloseIcon" size='1x' [classes]="['common-photo-button']"></fa-icon>
+</span>

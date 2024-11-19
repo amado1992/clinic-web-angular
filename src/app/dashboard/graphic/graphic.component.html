@@ -1,0 +1,187 @@
+<app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>
+<div *ngIf="loadingListData" class="pt-2" style="text-align: center; vertical-align: middle;">
+  <div class="spinner-border text-primary"></div>
+</div>
+<div *ngIf="!loadingListData && !errorLoadingListData" style="display: block;" class="chart">
+  <div class="row" style=" margin-right: 0px; margin-left: 0px;">
+    <div class="col-12" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom: #e6e9ec;">
+      <div class="d-flex align-items-center" style="margin-bottom: 5px;background-color:#ccced1;padding: 5px;">
+        
+        <label for='e_names'
+          style="margin-right: 15px;margin-left: 5px;text-align:center;margin-bottom: 0rem;" >{{ 'commons.date_period' | translate }}:</label>
+        <input class='form-control form-control-sm' type='date' [(ngModel)]="fechaIni">
+        <fa-icon style="margin-left: 5px;margin-right: 5px;" [icon]="faArrowRightIcon" size="1x"> </fa-icon>
+        <input class='form-control form-control-sm' type='date' [(ngModel)]="fechaFin">
+       
+        <fa-icon [icon]="faSearch" size="1x" 
+        (click)="FilterAction('filter')" ngbTooltip="{{ 'commons.filter' | translate }}" placement="bottom"
+        triggers="manual" #filterb_t="ngbTooltip" (mouseenter)="filterb_t.open()" (mouseleave)="filterb_t.close()"
+        style="padding-left: 7px;">
+      </fa-icon>
+        <span class='ml-3'>
+          <fa-icon [icon]="faEraserIcon" size="1x"
+          (click)="FilterAction('clean')" ngbTooltip="{{ 'commons.clear' | translate }}" placement="bottom"
+          triggers="manual" #eraser_t="ngbTooltip" (mouseenter)="eraser_t.open()" (mouseleave)="eraser_t.close()"
+          >
+        </fa-icon>
+        </span>
+      </div>
+    </div>
+    <div class="col-12 " >
+      <div id="exportthis">
+        <div class="row" style="    margin-left: -2px;margin-right: 0px;">
+          <div class="col-md-6 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+              <div class="row">
+                <div class="col-8">
+                  <label class="h6">{{ 'graphics.treatment-by-service' | translate }}</label>
+                </div>
+                <div class="col-4" style="text-align: end;">
+                 
+               
+           <a class="button" style="cursor: pointer !important;" (click)="downloadCanvas($event,0)">Exportar</a>
+
+                 
+                </div>
+              </div>
+            
+           
+            </div>
+            <div class="card-body" >
+
+                <canvas baseChart [chartType]="'pie'" [options]="barChartOptionsNew"
+                [datasets]="barChartDataTreatmentService.datasets" [labels]="barChartDataTreatmentService.labels"
+                [data]="barChartDataTreatmentService" id="barChartTreatmentService">
+              </canvas>
+         
+      
+          </div>
+          </div>
+          <div class="col-md-6 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+              <div class="row">
+                <div class="col-8">
+              <label class="h6">{{ 'graphics.treatment-by-sala' | translate }}</label>
+            </div>
+            <div class="col-4" style="text-align: end;">
+             
+           
+       <a class="button"style="cursor: pointer !important;" (click)="downloadCanvas($event,1)">Exportar</a>
+
+             
+            </div>
+            </div>
+            </div>
+            <div class="card-body">
+            <canvas baseChart [chartType]="'pie'" [options]="barChartOptionsNew"
+              [datasets]="barChartDataTreatmentRoom.datasets" [labels]="barChartDataTreatmentRoom.labels"
+              [data]="barChartDataTreatmentRoom">
+            </canvas>
+           </div>
+          </div>
+        </div>
+     
+        <div class="row"  style="margin-left: -2px;margin-right: 0px;">
+          <div class="col-md-6 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+       
+              <div class="row">
+                <div class="col-8">
+                  <label class="h6">{{ 'graphics.treatment-by-status' | translate }}</label>
+                </div>
+                <div class="col-4" style="text-align: end;">
+                 
+               
+           <a class="button" style="cursor: pointer !important;" (click)="downloadCanvas($event,2)">Exportar</a>
+
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <canvas baseChart [chartType]="'pie'" [options]="barChartOptionsNew"
+              [datasets]="barChartDataTreatmentStatus.datasets" [labels]="barChartDataTreatmentStatus.labels"
+              [data]="barChartDataTreatmentStatus">
+            </canvas>
+            </div>
+          </div>
+          <div class="col-md-6 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+             
+              <div class="row">
+                <div class="col-8">
+                  <label class="h6">{{ 'graphics.citation-by-status' | translate }}</label>
+                </div>
+                <div class="col-4" style="text-align: end;">
+                 
+               
+           <a class="button" style="cursor: pointer !important;" (click)="downloadCanvas($event,3)">Exportar</a>
+
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <canvas baseChart [chartType]="'pie'" [options]="barChartOptionsNew"
+              [datasets]="barChartDataCitationStatus.datasets" [labels]="barChartDataCitationStatus.labels"
+              [data]="barChartDataCitationStatus">
+            </canvas>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row" style="margin-left: -2px;margin-right: 0px;">
+          <div class="col-12 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+           
+              <div class="row">
+                <div class="col-8">
+                  <label class="h6">{{ 'graphics.treatment-by-empleado' | translate }}</label>
+                </div>
+                <div class="col-4" style="text-align: end;">
+                 
+               
+           <a class="button" style="cursor: pointer !important;" (click)="downloadCanvas($event,4)">Exportar</a>
+
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <canvas baseChart [chartType]="'bar'" [datasets]="chartDataTreatmentEmployee"
+              [options]="barChartOptionsNew" [legend]="true" (chartClick)="onChartClick($event)">
+            </canvas>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row"  style="margin-left: -2px;margin-right: 0px;">
+          <div class="col-12 card shadow mb-4" style="padding: 0px;margin: 0px;">
+            <div class="col-12 card-header" style="max-height: 50px;">
+              
+              <div class="row">
+                <div class="col-8">
+                  <label class="h6">{{ 'graphics.citation-by-fecha' | translate }}</label>
+                </div>
+                <div class="col-4" style="text-align: end;">
+                 
+               
+           <a class="button" style="cursor: pointer !important;" (click)="downloadCanvas($event,5)">Exportar</a>
+
+                 
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <canvas baseChart [chartType]="'line'" [datasets]="chartDataCitationDate2" [labels] = "chartDataCitationDateLabels2"
+              [options]="barChartOptionsNew" [legend]="true" (chartClick)="onChartClick($event)">
+            </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div #btnKeyPress  (click)="FilterAction('filter')">
+</div>

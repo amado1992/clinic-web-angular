@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-size: .9rem;
+  font-family: Roboto,Helvetica,sans-serif;
+}
+.badge-danger{
+  font-size: 45px!important;
+}
+.remove-button {
+  cursor: pointer;
+  color: #dc3545;
+  &:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+  }
+}
+.edit-button {
+  cursor: pointer;
+  color: #007bff;
+
+  &:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg,
+.modal-xl {
+    max-width: 800px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-xl,.modal-lg {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-sm{
+    max-width: 500px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-sm{
+    max-width: 500px;
+  }
+}
+
+@font-face {
+  font-family: Roboto,Helvetica,sans-serif;;
+  src: url(assets/branding/fonts/Myriad-Pro-Black-SemiExtended_31622.ttf) format("opentype");
+}
+@font-face {
+  font-family: myriad-black-condensed;
+  src: url(assets/branding/fonts/Myriad-Pro-Black-Condensed_31617.ttf) format("opentype");
+}
+@font-face {
+  font-family: myriad-condensed;
+  src: url(assets/branding/fonts/Myriad-Pro-Condensed_31633.ttf) format("opentype");
+}
+@font-face {
+  font-family: myriad-light-italic;
+  src: url(assets/branding/fonts/Myriad-Pro-Light-Italic_31637.ttf) format("opentype");
+}
+@font-face {
+  font-family: myriad-semibold;
+  src: url(assets/branding/fonts/Myriad-Pro-Semibold_31650.ttf) format("opentype");
+}
+@font-face {
+  font-family: raleway-regular;
+  src: url(assets/branding/fonts/Raleway-Regular.ttf) format("opentype");
+}

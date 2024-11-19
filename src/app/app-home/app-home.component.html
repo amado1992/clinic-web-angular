@@ -1,0 +1,19 @@
+<app-home-header></app-home-header>
+<mat-sidenav-container style='margin-top: 73px;' *ngIf="!buildingSidebar && !errorBuildingSidebar">
+  <mat-sidenav mode="side" [opened]="sideBarState" [fixedInViewport]="true" [fixedTopGap]="0"
+    style="background-color: #011627;overflow: hidden; ">
+    <div style="margin-top: 20px;">
+      <app-home-sidebar></app-home-sidebar>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="width: 100%; padding: 10px; margin-top: 20px;" [ngStyle]="{ 'padding-left.px': sideBarState ? 20 : 10}">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<div *ngIf="buildingSidebar || errorBuildingSidebar" style="padding-top: 17%;">
+  <!-- <lib-wait-indicator-bootstrap *ngIf="buildingSidebar" [spinDuration]="0.8" [width]="140" [height]="140">
+  </lib-wait-indicator-bootstrap> -->
+  <app-server-error *ngIf="errorBuildingSidebar" [error]="error"></app-server-error>
+</div>

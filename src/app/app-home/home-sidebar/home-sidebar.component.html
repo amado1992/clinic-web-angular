@@ -1,0 +1,49 @@
+<div class="menu-container" style="width: 270px;">
+  <div class="left side-menu" style="overflow-y: auto; width: fit-content;background-color:#011627;">
+    <div class="sidebar-inner slimscrollleft">
+        <!--- Divider -->
+        <div id="sidebar-menu">
+
+
+
+  <ul id="sidebar-menu">
+
+  <li *ngFor="let menu of menus" style="color: white;">
+    <a *ngIf="menu.type !== 'dropdown'" class="menu-item waves-effect waves-classic waves-light active" style="width: 240px;" (click)="menuItemClick(menu)" >
+      <fa-icon *ngIf="menu.icon" [icon]="menu.icon"></fa-icon>
+      <span *ngIf="menu.title.substring" style="font-size: medium;">
+        {{menu.title | translate}}
+      </span>
+      <span *ngIf="!menu.title.substring" style="font-size: medium;">
+        {{menu.title[language]}}
+      </span>
+    </a>
+    <a *ngIf="menu.type === 'dropdown'" class="waves-effect waves-classic waves-light active" style="width: 240px;font-size: medium;">
+      <div class="menu-item" (click)="menuState[menu.id] = !menuState[menu.id]">
+        <fa-icon *ngIf="menu.icon" [icon]="menu.icon"></fa-icon>
+        <span *ngIf="menu.title.substring">
+          {{menu.title | translate}}
+        </span>
+        <span *ngIf="!menu.title.substring">
+          {{menu.title[language]}}
+        </span>
+        <fa-icon [icon]="faCaretDownIcon" size='lg'></fa-icon>
+      </div>
+      <div *ngIf="menuState[menu.id]" style="width: fit-content;">
+        <div style="padding-left: 1em;" class="menu-item" *ngFor="let subMenu of menu.submenus">
+          <div (click)="clickedSubMenu(subMenu)" [id]="subMenu.title">
+            <fa-icon *ngIf="subMenu.icon" [icon]="subMenu.icon"></fa-icon>
+            <span *ngIf="subMenu.title.substring">
+              {{subMenu.title | translate}}
+            </span>
+            <span *ngIf="!subMenu.title.substring">
+              {{subMenu.title[language]}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+<input type="hidden" id="lastoption">
+</div></div></div></div>

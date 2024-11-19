@@ -1,0 +1,200 @@
+<app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-12' style="padding-left: 0px;padding-right: 0px;">
+      <div class="card">
+        <div class="card-header d-flex w-100">
+          <div class="col-10 d-flex align-items-center">
+            <h5 class='mb-0 text-muted'>
+              <fa-icon [icon]="faCogIcon"></fa-icon>
+              {{ 'company-admin.title' | translate }}
+            </h5>
+            <span class='spacer'></span>
+            <!--<div class="flex-column align-items-center">
+              <span style="cursor: pointer;" (click)="isCollapsed = !isCollapsed"
+                ngbTooltip="{{ 'home.ad_show_filters' | translate }}" placement="bottom" triggers="manual"
+                #filter_t="ngbTooltip" (mouseenter)="filter_t.open()" (mouseleave)="filter_t.close()">
+                <svg width="20px" height="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z" />
+                </svg>
+              </span>
+
+              <span style="cursor: pointer;" class='ml-2' ngbTooltip="{{ 'commons.create' | translate }}"
+                placement="bottom" triggers="manual" #create_t="ngbTooltip" (mouseenter)="create_t.open()"
+                (mouseleave)="create_t.close()">
+                <svg fill="#4caf50" (click)="AddCompany()" width="20px" height="20px" viewBox="-32 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                </svg>
+              </span>
+
+              <span class='ml-2' style="cursor: pointer;" ngbTooltip="{{ 'commons.edit' | translate }}"
+                placement="bottom" triggers="manual" #edit_t="ngbTooltip" (mouseenter)="edit_t.open()"
+                (mouseleave)="edit_t.close()">
+
+                <svg fill="blue" (click)="EditCompany()" width="20px" height="20px" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M17.561 2.439c-1.442-1.443-2.525-1.227-2.525-1.227L8.984 7.264 2.21 14.037 1.2 18.799l4.763-1.01 6.774-6.771 6.052-6.052c-.001 0 .216-1.083-1.228-2.527zM5.68 17.217l-1.624.35a3.71 3.71 0 0 0-.69-.932 3.742 3.742 0 0 0-.932-.691l.35-1.623.47-.469s.883.018 1.881 1.016c.997.996 1.016 1.881 1.016 1.881l-.471.468z" />
+                </svg>
+              </span>
+              <span style="cursor: pointer;" class='ml-2' (click)="openModal()"
+                ngbTooltip="{{ 'commons.remove' | translate }}" placement="bottom" triggers="manual"
+                #remove_t="ngbTooltip" (mouseenter)="remove_t.open()" (mouseleave)="remove_t.close()">
+
+
+                <svg fill="red" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path
+                      d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm3-3V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9zm0 8v6h2v-6H9zm4 0v6h2v-6h-2z" />
+                  </g>
+                </svg>
+
+              </span>
+            </div> -->
+          </div>
+          <div class="d-flex col-2 align-items-center">
+            <fa-icon [icon]="faEye" size="1x" (click)="isCollapsed = !isCollapsed"
+            ngbTooltip="{{ 'home.ad_show_filters' | translate }}" placement="bottom" triggers="manual"
+            #filter_t="ngbTooltip" (mouseenter)="filter_t.open()" (mouseleave)="filter_t.close()">
+          </fa-icon>
+          <span class='ml-2'>
+            <fa-icon [icon]="faPlusCircle" size="1x" (click)="AddCompany()"
+              ngbTooltip="{{ 'commons.create' | translate }}" placement="bottom" triggers="manual"
+              #create_t="ngbTooltip" (mouseenter)="create_t.open()" (mouseleave)="create_t.close()">
+            </fa-icon>
+          </span>
+          <span class='ml-2'>
+            <fa-icon [icon]="faEdit" size="1x" (click)="EditCompany()"
+              ngbTooltip="{{ 'commons.edit' | translate }}" placement="bottom" triggers="manual"
+              #edit_t="ngbTooltip" (mouseenter)="edit_t.open()" (mouseleave)="edit_t.close()">
+            </fa-icon>
+          </span>
+          <span class='ml-2'>
+            <fa-icon [icon]="faTimesIcon" size="1x" (click)="RemoveCompany()"
+              ngbTooltip="{{ 'commons.remove' | translate }}" placement="bottom" triggers="manual"
+              #remove_t="ngbTooltip" (mouseenter)="remove_t.open()" (mouseleave)="remove_t.close()">
+            </fa-icon>
+          </span>
+          </div>
+        </div>
+        <div class="card-body" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 5px;">
+          <div class='row'>
+            <div class='col-12 mt-2'>
+              <div class='row'>
+                <div class="d-flex col-10" style="margin-left: 15px;">
+                  <div class="d-flex ml-2" *ngIf="!isCollapsed">
+                    <label class="pr-1" for="filterText" style="padding-top: 5px;
+                    display: block;">{{'commons.filter2' | translate}}</label>
+                    <input id="filterText" class="form-control form-control-sm" type="text"
+                    placeholder="{{ 'commons.filter-placeholder' | translate }}" [(ngModel)]="filterText">
+                    </div>
+              
+                  <div class="d-flex" style=" margin-left: 20px;padding-top: 5px;
+                  display: block;" *ngIf="!isCollapsed">
+                   
+                    <fa-icon [icon]="faSearch" size="1x" style=""
+                    (click)="FilterAction('filter')" ngbTooltip="{{ 'commons.filter' | translate }}"
+                    placement="bottom" triggers="manual" #filterb_t="ngbTooltip" (mouseenter)="filterb_t.open()"
+                    (mouseleave)="filterb_t.close()">
+                  </fa-icon>
+                    <span class='ml-3'>
+                      <fa-icon [icon]="faEraserIcon" size="1x" style=""
+                      (click)="FilterAction('clean')" ngbTooltip="{{ 'commons.clear' | translate }}" placement="bottom"
+                      triggers="manual" #eraser_t="ngbTooltip" (mouseenter)="eraser_t.open()"
+                      (mouseleave)="eraser_t.close()">
+                    </fa-icon>  
+                    </span>
+                  </div>
+                  </div>
+                  
+                 
+              </div>
+          <!--<div class='row'>
+                <div class="d-flex" style="margin-left: 15px;">
+                  <div style="margin-top: 33px; margin-left: 3;">
+                    <fa-icon [icon]="faEraserIcon" size="lg" style="stroke :  #4CAF50; color: #4CAF50;"
+                      (click)="FilterAction('clean')" ngbTooltip="{{ 'commons.clear' | translate }}" placement="bottom"
+                      triggers="manual" #eraser_t="ngbTooltip" (mouseenter)="eraser_t.open()"
+                      (mouseleave)="eraser_t.close()">
+                    </fa-icon>
+                    <span class='ml-3'>
+                      <fa-icon [icon]="faFilterIcon" size="lg" style="stroke :  #ffc107; color: #ffc107;"
+                        (click)="FilterAction('filter')" ngbTooltip="{{ 'commons.filter' | translate }}"
+                        placement="bottom" triggers="manual" #filterb_t="ngbTooltip" (mouseenter)="filterb_t.open()"
+                        (mouseleave)="filterb_t.close()">
+                      </fa-icon>
+                    </span>
+                  </div>
+                  <div class="d-block ml-3">
+                    <label for="filterText">{{'commons.filter2' | translate}}</label>
+                    <input id="filterText" class="form-control form-control-sm" type="text"
+                      placeholder="{{ 'commons.filter-placeholder' | translate }}" [(ngModel)]="filterText">
+                  </div>
+                </div>
+              </div>-->
+            </div>
+          </div>
+       
+          <div class='row'>
+            <div *ngIf="loadingCompanys">
+
+              <div id="product-table_processing" class="dataTables_processing card" >{{ 'commons.process' | translate
+              }}<div><div></div><div></div><div></div><div></div></div></div>
+            </div>
+            <div class='col-12 mt-3'>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover table-sm mt-0"  *ngIf="!loadingCompanys && !errorLoadingCompanys">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">{{'commons.name' | translate}}</th>
+                      <th scope="col">{{'commons.descrip' | translate}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of items;let i=index">
+
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.nombre}}</td>
+                      <td *ngIf="selectionState[i]" style="cursor: pointer; background-color:#dee2e6;"
+                        (click)="onSelect(i)"> {{item.descripcion}}</td>
+
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)"> {{item.nombre}}
+                      </td>
+                      <td *ngIf="!selectionState[i]" style="cursor: pointer; " (click)="onSelect(i)">
+                        {{item.descripcion}}</td>
+
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex">
+                  <div class="row"  *ngIf="!loadingCompanys && !errorLoadingCompanys">
+                    <app-paginator (pageChange)="pageChanged($event)" [currentPage]="currentPage + 1"
+                      maxPage={{totalPages}} totalItems={{totalItems}}>
+                    </app-paginator>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div #btnKeyPress (click)="FilterAction('filter')">
+</div>
+
+<ng-template #myTemplate>
+  <div class="modal-body text-center">
+    <span *ngIf="!loadingDelete">
+      <div class="spinner-border text-primary"></div>
+    </span>
+    <span><p>{{'commons.messconf' | translate}}</p></span>
+    <button [disabled]="!loadingDelete" type="button" class="btn btn-default" (click)="confirm()" >{{'commons.confir' | translate}}</button>
+    <button type="button" class="btn btn-success" (click)="decline()" >{{'commons.decline' | translate}}</button>
+  </div>
+</ng-template>

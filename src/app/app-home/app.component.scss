@@ -1,0 +1,27 @@
+.main-container {
+  padding: 15px;
+  -ms-overflow-x: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-wrapper {
+
+  .sidebar {
+    left: 0px;
+  }
+
+
+  .attribution {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    margin: 5px;
+    letter-spacing: 1px;
+  }
+
+}
+

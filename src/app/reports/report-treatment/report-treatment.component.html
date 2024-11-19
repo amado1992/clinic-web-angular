@@ -1,0 +1,211 @@
+<app-press-key-action [keypress]="['Enter']" [attrAction]="[btnKeyPress]"></app-press-key-action>
+<div *ngIf="loadingData"  style="text-align: center;">
+  <div class="spinner-border text-primary"></div>
+</div>
+<div *ngIf="!loadingData && !errorLoadingData" class='container-fluid'>
+  <div class='row'>
+    <div class='col-12' style="padding-left: 0px;padding-right: 0px;">
+      <div class="card">
+        <div class="card-header d-flex w-100">
+          <div class="col-10 d-flex align-items-center">
+            <h5 class='mb-0 text-muted'>
+              <fa-icon [icon]="faCogIcon"></fa-icon>
+              {{ 'home.report_treatment' | translate }}
+            </h5>
+            <span class='spacer'></span>
+            <div class="flex-column align-items-center">
+            
+            </div>
+          </div>
+          <div class="d-flex col-2 align-items-center">
+            <fa-icon [icon]="faEye" size="1x" (click)="isCollapsed = !isCollapsed"
+            ngbTooltip="{{ 'home.ad_show_filters' | translate }}" placement="bottom" triggers="manual"
+            #filter_t="ngbTooltip" (mouseenter)="filter_t.open()" (mouseleave)="filter_t.close()">
+          </fa-icon>
+          </div>
+        </div>
+        <div class="card-body" style="padding-left: 5px;padding-right: 5px;padding-top: 0px;padding-bottom: 5px;">
+          <div class='row mt-2'>
+            <div class="d-flex col-10" style="margin-left: 15px;" >
+              <div class="d-flex ml-3" *ngIf="!isCollapsed">
+                <label class="pr-1"   style="padding-top: 5px;
+                display: block;" for="filterText">{{'commons.filter2' | translate}}</label>
+                <div class="d-flex">
+                  <div class="d-flex">
+                    <label for="role" style="padding-top: 5px;
+                    display: block;">{{'home.ad_employees' | translate}}</label>
+                    <select id="role" class="form-control form-control-sm ml-1" [(ngModel)]="selectEspecialista">
+                      <option [value]="'null'">{{'commons.empty'| translate}}</option>
+                      <option [value]="[i, especialista.id]" *ngFor="let especialista of especialistas; let i=index"
+                        [style.display]="EnableEmployee(i)">{{ especialista.apellidos }}
+                      </option>
+                    </select>
+                  </div>
+                  <span style="">
+                    <fa-icon [icon]="faPlusSquareIcon" size="2x" (click)="SelectEmployee()"
+                      ngbTooltip="{{ 'commons.add_filter' | translate }}" placement="bottom" triggers="manual"
+                      #selectEmpl_t="ngbTooltip" (mouseenter)="selectEmpl_t.open()"
+                      (mouseleave)="selectEmpl_t.close()" class="ml-1">
+                    </fa-icon>
+                  </span>
+                  <div *ngFor="let especialista of especialistas; let i=index" [style.display]="DisableEmployee(i)"
+                    style="background-color: #d4d9e4e8; border-color: #6598e6; 
+                      border-style: solid; border-radius: 10px; margin-bottom: 5px; border-width: 2px; margin-top: 35px; margin-left: 5px;">
+                    {{ especialista.apellidos }}
+                    <span style="margin-right: 5px;">
+                      <fa-icon [icon]="faCloseIcon" size="1x" (click)="RemoveEmployee(i)"
+                        ngbTooltip="{{ 'commons.remove' | translate }}" placement="bottom" triggers="manual"
+                        #removeEmpl_t="ngbTooltip" (mouseenter)="removeEmpl_t.open()"
+                        (mouseleave)="removeEmpl_t.close()">
+                      </fa-icon>
+                    </span>
+                  </div>
+                </div>
+
+                  <div class="d-flex ml-3" *ngIf="!isCollapsed">
+                    <label for="specialty" style="padding-top: 5px;
+                    display: block;">{{'home.ad_services' | translate}}</label>
+                    <select id="specialty" class="form-control form-control-sm ml-1" [(ngModel)]="selectServicio">
+                      <option [value]="'null'">{{'commons.empty'| translate}}</option>
+                      <option [value]="[i, servicio.id]" *ngFor="let servicio of servicios; let i=index"
+                        [style.display]="EnableService(i)">{{ servicio.nombre }}
+                      </option>
+                    </select>
+                    <span style="margin-left: 5px;">
+                      <fa-icon [icon]="faPlusSquareIcon" size="2x" (click)="SelectService()"
+                        ngbTooltip="{{ 'commons.add_filter' | translate }}" placement="bottom" triggers="manual"
+                        #selectServ_t="ngbTooltip" (mouseenter)="selectServ_t.open()"
+                        (mouseleave)="selectServ_t.close()">
+                      </fa-icon>
+                    </span>
+                    <div *ngFor="let servicio of servicios; let i=index" [style.display]="DisableService(i)"
+                      style="background-color: #d4d9e4e8; border-color: #6598e6; 
+                    border-style: solid; border-radius: 10px; margin-bottom: 5px; border-width: 2px; margin-top: 35px; margin-left: 5px;">
+                      {{ servicio.nombre }}
+                      <span style="margin-right: 5px;">
+                        <fa-icon [icon]="faCloseIcon" size="1x" (click)="RemoveService(i)"
+                          ngbTooltip="{{ 'commons.remove' | translate }}" placement="bottom" triggers="manual"
+                          #selectService_t="ngbTooltip" (mouseenter)="selectService_t.open()"
+                          (mouseleave)="selectService_t.close()">
+                        </fa-icon>
+                      </span>
+                    </div>
+                  </div>
+              <div class="d-flex" style=" margin-left: 10px;padding-top: 5px;
+              display: block;" *ngIf="!isCollapsed">
+              
+              <fa-icon [icon]="faSearch" size="1x" style=""
+              (click)="FilterAction('filter')" ngbTooltip="{{ 'commons.filter' | translate }}"
+                placement="bottom" triggers="manual" #filterb_t="ngbTooltip" (mouseenter)="filterb_t.open()"
+                (mouseleave)="filterb_t.close()">
+              </fa-icon>
+              <span class='ml-3'>
+                <fa-icon [icon]="faEraserIcon" size="1x" style=""
+                (click)="FilterAction('clean')" ngbTooltip="{{ 'commons.clear' | translate }}" placement="bottom"
+                triggers="manual" #eraser_t="ngbTooltip" (mouseenter)="eraser_t.open()"
+                (mouseleave)="eraser_t.close()">
+              </fa-icon>
+              </span>
+              </div>
+              </div>
+              </div>
+              
+             
+          </div>
+          <div class='row' *ngIf="!isCollapsed">
+            <div class='col-12'>
+             <!-- <div class='row' style="margin-bottom: 10; margin-left: 0px;">
+                <h4>{{ 'commons.filters' | translate }}</h4>
+              </div>
+              <div class='row'>
+                <div class="d-flex" style="margin-left: 15px;">
+                  <div class="col" style="margin-top: auto; margin-left: 3;">
+                  
+                  </div>
+                  <div class="d-block ml-3">
+                    <div class="d-flex">
+                      <div class="d-block">
+                       
+                      </div>
+                     
+                      
+                    </div>
+                  </div>
+                  <div class="d-block ml-3">
+                    <div class="d-flex">
+                      <div class="d-block">
+                     
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <hr>
+              <div class='row'>
+                <div class="col">
+                  <div class="d-flex" style="margin-bottom: 5px;">
+                    <label for='e_names'  style="margin-right: 15px;margin-left: 5px;padding-top: 5px;
+                    display: block;"
+                      >{{ 'commons.date_period' | translate }}:</label>
+                    <input class='form-control form-control-sm' type='date' [(ngModel)]="fechaIni">
+                    <fa-icon style="margin-left: 5px;margin-right: 5px;padding-top: 5px;" [icon]="faArrowRightIcon" size="1x"> </fa-icon>
+                    <input class='form-control form-control-sm' type='date' [(ngModel)]="fechaFin">
+                    <label for='e_names' 
+                      style="margin-right: 15px;margin-left: 5px;padding-top: 5px;">{{ 'commons.duration' | translate }}:</label>
+                    <input class='form-control form-control-sm' type='time' [(ngModel)]="tiempoIni">
+                    <fa-icon style="margin-left: 5px;margin-right: 5px;padding-top: 5px;" [icon]="faArrowRightIcon" size="1x"> </fa-icon>
+                    <input class='form-control form-control-sm' type='time' [(ngModel)]="tiempoFin">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+          <div class='row' >
+            <div *ngIf="loadingTreatments">
+
+              <div id="product-table_processing" class="dataTables_processing card" >{{ 'commons.process' | translate
+              }}<div><div></div><div></div><div></div><div></div></div></div>
+            </div>
+            <div class='col-12 mt-3'>
+              <div class="table-responsive" *ngIf="!loadingTreatments && !errorLoadingTreatments">
+                <table class="table table-bordered table-hover table-sm mt-0">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">{{'commons.service' | translate}}</th>
+                      <th scope="col">{{'commons.branch' | translate}}</th>
+                      <th scope="col">{{'commons.specialist' | translate}}</th>
+                      <th scope="col">{{'commons.date' | translate}}</th>
+                      <th scope="col">{{'commons.estimated_time' | translate}}</th>
+                      <th scope="col">{{'commons.real_time' | translate}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of items;let i=index">
+                      <td >{{item.nombreServicio}}</td>
+                      <td >{{item.nombreRama}}</td>
+                      <td >{{item.apellidosEspecialista}} ({{item.especialidad}})</td>
+                      <td >{{item.fechaShort}}</td>
+                      <td >{{item.estimado}}</td>
+                      <td >{{item.real}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-flex">
+                  <div class="row" *ngIf="!loadingTreatments && !errorLoadingTreatments">
+                    <app-paginator *ngIf="!loadingData && !errorLoadingData" (pageChange)="pageChanged($event)"  [currentPage] ="currentPage + 1"
+                      maxPage={{totalPages}} totalItems={{totalItems}}>
+                    </app-paginator>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div #btnKeyPress  (click)="FilterAction('filter')">
+</div>

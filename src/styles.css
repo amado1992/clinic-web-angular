@@ -1,0 +1,169 @@
+/*!* You can add global styles to this file, and also import other style files *!*/
+.admin-card {
+  border: 0px;
+}
+.admin-card > .card-header {
+  border: 1px solid rgba(0,0,0,.125);
+}
+.admin-card > .card-body {
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: .5rem;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.box-shadow-red {
+  box-shadow: inset 3px 0px 0px #dc3545;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.35s;
+}
+.box-shadow-green {
+  box-shadow: inset 3px 0px 0px #4dbd74;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.35s;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.admin-items-list {
+  padding-left: 0px;
+}
+@media screen and (max-width: 991px) {
+  .admin-items-list {
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    padding-bottom: 10px;
+    padding-right: 0px;
+  }
+  .admin-item-content {
+    margin-top: 10px;
+  }
+  .admin-list-container {
+    max-height: 286px;
+  }
+
+  .tabs-items {
+    margin-top: 5%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .admin-items-list {
+    border-right: 1px solid rgba(0,0,0,0.125);
+    padding-right: 16px;
+  }
+  .admin-item-content {
+    padding-left: 16px;
+  }
+
+  .admin-list-container {
+    max-height: 457px;
+  }
+}
+.admin-control-button {
+  cursor: default;
+}
+.admin-control-button.active {
+  cursor: pointer;
+}
+.admin-control-button.active:hover{
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+}
+.admin-list-container {
+  background-color: white;
+  overflow-y: auto;
+}
+.admin-h4 {
+  font-size: 25px;
+}
+.admin-h5 {
+  font-size: 15px;
+}
+.admin-border {
+  border: 1px solid rgba(0,0,0,0.125);
+}
+.admin-active-indicator {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  background-color: lightgreen;
+}
+.admin-inactive-indicator {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  background-color: crimson;
+}
+.break-word {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.admin-overview-item-primary-value {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  padding: 0px;
+  width: auto;
+}
+.admin-overview-item-secondary-value {
+  margin: 0px;
+  padding: 0px;
+  margin-left: 5px;
+  width: auto;
+}
+.fs-18 { font-size: 18px; }
+.fs-19 { font-size: 19px; }
+.fs-20 { font-size: 20px; }
+.fs-22 { font-size: 22px; }
+.fs-23 { font-size: 23px; }
+.fs-24 { font-size: 24px; }
+.fs-25 { font-size: 25px; }
+.fs-28 { font-size: 28px; }
+.fs-36 { font-size: 36px; }
+.fs-37 { font-size: 37px; }
+.fs-48 { font-size: 48px; }
+.fs-56 { font-size: 56px; }
+.inactive { color: rgba(0, 0, 0, 0.26); }
+
+.common-create-button{
+  font-size: 36px; margin: auto; width: auto; height: auto;
+}
+.common-edit-button{
+  font-size: 36px; margin: auto; width: auto; height: auto; margin-left: 10px;
+}
+.common-photo-button{
+  font-size: 36px; margin: auto; width: auto; height: auto; margin-left: 10px;
+}
+.summary-modal .modal-dialog {
+  max-width: 80%;
+}
+.summary-modal-close-btn:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+}
+.summary-modal-close-btn {
+  cursor: pointer;
+}
+@media (min-width: 992px) {
+  .modal-lg,
+.modal-xl {
+    max-width: 800px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-xl,.modal-lg {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-sm{
+    max-width: 500px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-sm{
+    max-width: 500px;
+  }
+}

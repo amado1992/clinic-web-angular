@@ -1,0 +1,98 @@
+<div *ngIf="updateData">
+    <div class="spinner-border text-primary"></div>
+  </div>
+  <div>
+   
+        <div class="card">
+          <div class="modal-header card-header">
+            <div class="d-flex align-items-center">
+              <h5 class='mb-0'>
+                <div *ngIf="classificator && classificator.id">
+                  <fa-icon [icon]="faCogIcon"></fa-icon>
+                  {{ 'commons.update' | translate }} {{ 'commons.classificator' | translate }}
+                </div>
+                <div *ngIf="classificator == null || (classificator && classificator.id == null)">
+                  <fa-icon [icon]="faCogIcon"></fa-icon>
+                  {{ 'commons.create' | translate }} {{ 'commons.classificator' | translate }}
+                </div>
+              </h5>
+            </div>
+          </div>
+          <div class="modal-body" style="padding-left: 20px;padding-right: 20px;padding-top: 0px;padding-bottom: 0px;">
+            <ul class="nav nav-tabs mt-1" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> General Data</a>
+              </li>
+             
+             
+            </ul>
+            <form [formGroup]="classificatorForm">
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">  
+                  <div class="container-fluid" style="padding-left: 0px;padding-right: 5px; margin-bottom: 5px;">
+                    <div class="row no-gutters" style="margin-bottom: 5px;">
+                    
+                        <div class="col-2 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_name'
+                            style="margin-right: 15px;margin-left: 5px;">{{ 'commons.classificator' | translate }}*:
+                          </label>
+                        </div>
+                        <div class="col">
+                          <input class='form-control form-control-sm' type='text' formControlName='classificator'>
+                        </div>
+                    </div>
+                    <div class="row no-gutters" style="margin-bottom: 5px;">
+                        <div class="col-2 d-flex" style="margin-bottom: 5px;">
+                          <label for='e_descrip'
+                            style="margin-right: 15px;margin-left: 5px; margin-bottom: 5px;">{{ 'commons.descrip' | translate }}:</label>
+                            </div>
+                            <div class="col">
+                          <input class='form-control form-control-sm' type='text' formControlName='description'>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </div>
+            <!--  <div class='mt-2' style="background-color:#dee2e6;  border-radius: 15px; ;padding-top: 5px;">
+              
+              </div>-->
+              <div class="modal-footer">
+              <div class="row mr-0 ml-0 mt-2 w-100">
+                <div class="col-6">
+                  <label *ngIf="classificator && classificator.id" style="margin-bottom: 0px; text-align: left;">
+                    <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked] = "creating"/>
+                    {{ 'commons.confirm' | translate }} {{ 'commons.update2' | translate }}
+                  </label>
+                  <label *ngIf="classificator == null || (classificator && classificator.id == null)" style="margin-bottom: 0px;">
+                    <input type="checkbox" (change)="onCheckboxAcceptChange($event)" [checked] = "creating" />
+                    {{ 'commons.confirm' | translate }} {{ 'commons.creation' | translate }}
+                  </label>
+                </div>
+                <div class="col-6 align-items-end">
+               
+                <span style='flex: 1 1 auto;'></span>
+                <button *ngIf="classificator && classificator.id" class='btn btn-success'
+                  [disabled]="!classificatorForm.valid || !creating || disabled" (click)="okUpdate()"
+                  style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.update' | translate }}
+                </button>
+                <button *ngIf="classificator == null || (classificator && classificator.id == null)" class='btn btn-success'
+                  [disabled]="!classificatorForm.valid || !creating || disabled" (click)="okUpdate()"
+                  style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.create' | translate }}
+                </button>
+                <button class='btn btn-danger' (click)="cancelUpdate();" style='margin-left: 5px; margin-bottom: 10px;'>
+                  {{ 'commons.cancel' | translate }}
+                </button>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+     
+  </div>
+  
+  
+  

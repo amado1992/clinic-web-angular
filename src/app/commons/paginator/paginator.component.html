@@ -1,0 +1,52 @@
+<div class="row" style="margin-left: 15px; margin-right: 5px; ">
+     
+     <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="product-table_paginate">
+                         <ul class="pagination">
+                              <li class="paginate_button page-item" id="product-table_previous">
+                              <fa-icon class="page-link" [icon]="faAngleDoubleLeftIcon" size="1x" style="margin-right: 5px; cursor: pointer;" (click)="goBegin()"></fa-icon>
+                         </li>
+               <li class="paginate_button page-item">
+                  
+                         <fa-icon class="page-link" [icon]="faAngleLeftIcon" size="1x" style="margin-right: 5px; cursor: pointer;" (click)="goLeft()"></fa-icon></li>
+                         <li class="paginate_button page-item">
+                              <div class="d-flex page-link" style="width: max-content; margin-right: 5px; cursor: pointer;background-color: #eaecf4;">
+                              {{cPage}} / {{maxPage}}
+                              </div>
+                         </li>
+                         <li class="paginate_button page-item ">
+                     
+                              <fa-icon class="page-link" [icon]="faAngleRightIcon" size="1x" style="margin-right: 5px; cursor: pointer;" (click)="goRight()"></fa-icon></li>
+               <li class="paginate_button page-item next" id="product-table_next">
+                    <fa-icon class="page-link" [icon]="faAngleDoubleRightIcon" size="1x" style="margin-right: 5px; cursor: pointer;" (click)="goEnd()"></fa-icon></li>
+               </ul></div></div></div>
+<!--<div class="row" style="margin-left: 15px; margin-right: 5px; border-style: solid; border-color: #dee2e6;
+border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-radius: 5px;">
+
+     <fa-icon [icon]="faAngleDoubleLeftIcon" size="2x" style="margin-right: 5px; border-style: solid; border-color: #dee2e6;
+     border-left-width: 0px; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px;
+     padding-left: 5px; padding-right: 5px; cursor: pointer;" (click)="goBegin()"></fa-icon>
+
+     <fa-icon [icon]="faAngleLeftIcon" size="2x" style="margin-right: 5px; cursor: pointer;" (click)="goLeft()"></fa-icon>
+
+     <div style="border-style: solid; border-color: #dee2e6; margin-right: 5px; padding-left: 5px;
+           border-left-width: 1px; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px;">
+          <label style="margin-right: 5px; ">{{cPage}}</label>
+          <label style="margin-right: 5px; ">/ {{maxPage}}</label>
+     </div>
+
+     <fa-icon [icon]="faAngleRightIcon" size="2x" style="border-style: solid; border-color: #dee2e6;
+     margin-right: 5px; border-left-width: 0px; border-top-width: 0px; padding-right: 5px;
+     border-right-width: 1px; border-bottom-width: 0px; cursor: pointer;" (click)="goRight()"></fa-icon>
+
+     <fa-icon [icon]="faAngleDoubleRightIcon" size="2x" style="margin-right: 5px; border-style: solid; 
+     border-color: #dee2e6; cursor: pointer; border-left-width: 0px; border-top-width: 0px; border-right-width: 1px; 
+     border-bottom-width: 0px; padding-right: 5px" (click)="goEnd()"></fa-icon>
+
+     <div style="border-style: solid; border-color: #dee2e6;
+     border-left-width: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px;">
+          <label style="margin-right: 5px; ">Total:</label>
+          <label style="margin-right: 5px; ">{{totalItems}}</label>
+     </div>
+
+</div>-->
